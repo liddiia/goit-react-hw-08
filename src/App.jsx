@@ -1,68 +1,32 @@
 
-
-import ContactForm from "./components/ContactForm/ContactForm";
-import SearchBox from "./components/SearchBox/SearchBox";
-import ContactList from "./components/ContactList/ContactList";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { apiGetContacts } from "./redux/contactsOps";
-import { Toaster, toast } from "react-hot-toast";
+import { Suspense, lazy } from "react";
+import "./App.css";
+import { Routes, Route } from "react-router-dom";
+import { Header } from "./components/Layout/Layout";
 import Loader from "./components/Loader/Loader";
-import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
+
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));
+const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
+const RegistrationPage = lazy(() => import("./pages/RegistrationPage/RegistrationPage"));
+// const MovieReviews = lazy(() =>
+//const NotFoundPage = lazy(() => import("./pages/NotFoundPage"));
 
 const App = () => {
- 
-  const dispatch = useDispatch()
-  const isLoading = useSelector((state)=>state.contacts.loading)
-  const error = useSelector((state)=>state.contacts.error)
- 
-  useEffect(()=>{ 
-  
-  dispatch(apiGetContacts())
-  .unwrap()
-  .then(() => {
-    toast.success("The phonebook is loaded!");
-  })
-  .catch((error)=> {
-    toast.error("Failed to download phonebook!");
-  });
-   },[dispatch]
-)
- 
-
   return (
-    <div
-      style={{
-
-        display: "block",
-        flexDirection: "column",
-        marginLeft: "20px",
-      }}
-    >
-      <h1>Phonebook</h1>
-      <ContactForm  />
-      {error && <ErrorMessage />}
-      {isLoading && <Loader />}
-       <SearchBox   />  
-   
-      <ContactList />
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          success: {
-            style: {
-              background: "#4dc31a",
-            },
-          },
-          error: {
-            icon: "❌",
-            style: {
-              background: "#c86b62",
-            },
-          },
-        }}
-      />
-    </div>
+    <>
+      <Header />
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+           <Route path="/register" element={<RegistrationPage />} />
+          <Route path="/login" element={<LoginPage />}/>
+           <Route path="/contacts" element={<ContactsPage />} />
+             
+          {/* <Route path="*" element={<NotFoundPage />} /> */}
+        </Routes>
+      </Suspense>
+    </>
   );
 };
 
