@@ -3,12 +3,8 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 
 import * as Yup from "yup";
 
-
 import { useDispatch } from "react-redux";
 import { apiRegisterUser } from "../../redux/auth/operations";
-// import { addContact } from "../../redux/contactsOps";
-
-
 
 
 const RegistrationSchema = Yup.object().shape({
@@ -26,27 +22,13 @@ const RegistrationSchema = Yup.object().shape({
 
 
 const UserRegistrForm = () => {
-
  const dispatch = useDispatch();
-
  const handleSubmit = (values, actions) => {
     dispatch(apiRegisterUser(values))
     console.log(values);
-//     onAddContact(values);
+
   actions.resetForm();
   };
-
-//     const onAddContact = (formData) => {
-//     const newContacts = {
-//       ...formData,
-//     };
-//     const action = addContact(newContacts)
-//     dispatch(action)
-
-//   };
-
-
-
   return (
     <div className={css.registrFormCont} >
         <h2>UserRegistrForm</h2>
