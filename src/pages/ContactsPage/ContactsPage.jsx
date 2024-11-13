@@ -1,15 +1,17 @@
 import ContactForm from "../../components/ContactForm/ContactForm";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import ContactList from "../../components/ContactList/ContactList";
+
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+
 import { apiGetContacts } from "../../redux/contacts/operations"         
 
 import { Toaster, toast } from "react-hot-toast";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
 import { selectContacts, selectError, selectIsLoading } from "../../redux/contacts/slice";
-// import css from './ContactsPage.module.css'
+import { useEffect } from "react";
+
 
 const ContactsPage = () => {
  
