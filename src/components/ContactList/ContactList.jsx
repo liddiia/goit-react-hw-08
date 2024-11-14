@@ -12,11 +12,13 @@ const ContactList = () => {
       <h2>Contacts</h2>
       
         <ul className={css.listBox}>
-          {contacts.map((contact) => (
+          {contacts.length===0 ? (
+            <p>There are no contacts in your Phonebook!</p>
+          ):(contacts.map((contact) => (
             <li key={contact.id}>
               <ContactItem id={contact.id} name={contact.name} number={contact.number} />
             </li>
-          ))}
+          )))}
         </ul>
      
     </div>
