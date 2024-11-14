@@ -3,13 +3,14 @@
 import { NavLink } from "react-router-dom";
 import css from "./Navigation.module.css";
 import { useSelector } from "react-redux";
-import { selectUsersDataIsLoggedIn } from "../../redux/auth/slice";
+import { selectUsersDataIsLoggedIn } from "../../redux/auth/selectors";
+
 
 export const Navigation = () => {
   const isLoggedIn = useSelector(selectUsersDataIsLoggedIn);
 
   return (
-    <header className={css.header}>
+    
       <div className={css.wrapper}>
         <nav>
           <NavLink
@@ -28,6 +29,6 @@ export const Navigation = () => {
           )}
         </nav>
       </div>
-    </header>
+    
   );
 };

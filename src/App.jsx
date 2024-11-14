@@ -4,10 +4,11 @@ import { Routes, Route } from "react-router-dom";
 import Loader from "./components/Loader/Loader";
 import { useDispatch, useSelector } from "react-redux";
 import { apiGetCurrentUser } from "./redux/auth/operations";
-import { selectUsersDataIsRefreshing } from "./redux/auth/slice";
+
 import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import RestrictedRoute from "./components/RestrictedRoute/RestrictedRoute";
 import { Layout } from "./components/Layout";
+import { selectUsersDataIsRefreshing } from "./redux/auth/selectors";
 
 const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
 const ContactsPage = lazy(() => import("./pages/ContactsPage/ContactsPage"));

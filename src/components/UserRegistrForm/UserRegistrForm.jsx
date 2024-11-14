@@ -31,7 +31,7 @@ const UserRegistrForm = () => {
   };
   return (
     <div className={css.registrFormCont} >
-        <h2>UserRegistrForm</h2>
+        <h2> Registration Form</h2>
         <Formik
         initialValues={{
           name: "",

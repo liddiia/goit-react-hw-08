@@ -6,6 +6,12 @@
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
   background-color: #242424; */
+--color-dack: rgb(19, 42, 34);
+--color-light: rgb(107, 148, 135);
+--color-background: rgb(233, 241, 239);
+
+--color-text-error: rgb(202, 17, 17);
+
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -18,7 +24,9 @@
 }
 
 
-h1,
+h1{
+  margin: 20px 0 0 0;
+}
 h2,
 h3,
 h4,
@@ -32,6 +40,7 @@ ul
  {
   margin: 0;
   padding: 0;
+  list-style: none;
 }
 
 img {
@@ -42,7 +51,8 @@ img {
 
 body {
   margin: 0;
-
+ background-color:var(--color-background);
+ color: var(--color-dack);
 }
 
 h1 {
@@ -52,25 +62,18 @@ h1 {
 
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 1px solid rgb(19, 42, 34);
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color:var(--color-light);
   cursor: pointer;
   transition: border-color 0.25s;
 }
-button:hover {
-  border-color: #646cff;
+button:hover,button:focus  {
+  background-color: var(--color-dack);
+  border-color:var(--color-light) ;
+  color: var(--color-light);
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-
-  button {
-    background-color: #f9f9f9;
-  }
 

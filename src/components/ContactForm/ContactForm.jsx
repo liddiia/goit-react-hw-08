@@ -37,7 +37,7 @@ const handleSubmit = (values, actions) => {
       .required("Required"),
   });
   return (
-    <div>
+    <div className={css.contactFormCont}>
       <Formik
         initialValues={{
           name: "",

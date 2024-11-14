@@ -23,14 +23,13 @@ const LoginForm = () => {
 
  const handleSubmit = (values, actions) => {
    dispatch(apiLoginUser(values))
-//     console.log(values);
-// //     onAddContact(values);
+
   actions.resetForm();
   };
 
   return (
     <div className={css.loginFormCont}>
-        <h3>LoginForm</h3>
+        <h2 className={css.loginFormTitle}>Login Form</h2>
 
         <Formik
         initialValues={{

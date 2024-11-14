@@ -1,25 +1,32 @@
-import { Link } from "react-router-dom";
-import css from "./HomePage.module.css";
-import { useSelector } from "react-redux";
-import { selectUsersDataIsLoggedIn } from "../../redux/auth/slice";
 
+import { NavLink } from "react-router-dom";
+import css from "./HomePage.module.css";
 const HomePage = () => {
-  const isLoggedIn = useSelector(selectUsersDataIsLoggedIn);
   return (
-    <div className={css.homePageCont}>
-      <h1>Welcome to Phonebook!</h1>
-      <p>Your personal contact manager, always at your fingertips.</p>
-      <p>Why Phonebook?</p>
-      <ul>
-        <li>Secure and private storage of your contacts.</li>
-        <li>Quick search and easy access to your contacts.</li>
-        <li>Manage your contacts from anywhere, anytime.</li>
-      </ul>
-      {!isLoggedIn && (
-        <Link to="/register" className={css.getStartedButton} aria-label="Get Started">
-          Get Started
-        </Link>
-      )}
+    <div className={css.homePage}>
+      <section className={css.header}>
+        <h1>Welcome to Phonebook!</h1>
+        <p>Your personal contact manager, always at your fingertips.</p>
+      </section>
+
+      <section className={css.features}>
+        <h2>Why Phonebook?</h2>
+        <ul>
+          <li>Secure and private storage of your contacts.</li>
+          <li>Quick search and easy access to your contacts.</li>
+          <li>Manage your contacts from anywhere, anytime.</li>
+        </ul>
+      </section>
+
+      <section className={css.navigation}>
+        <h2>Get Started</h2>
+        <NavLink to="/register" className={css.link}>
+        <b>  Register</b>
+        </NavLink>
+        <NavLink to="/login" className={css.link}>
+         <b> Log in</b>
+        </NavLink>
+      </section>
     </div>
   );
 };

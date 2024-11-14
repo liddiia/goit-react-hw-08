@@ -9,8 +9,9 @@ import { apiGetContacts } from "../../redux/contacts/operations"
 import { Toaster, toast } from "react-hot-toast";
 import Loader from "../../components/Loader/Loader";
 import ErrorMessage from "../../components/ErrorMessage/ErrorMessage";
-import { selectContacts, selectError, selectIsLoading } from "../../redux/contacts/slice";
+
 import { useEffect } from "react";
+import { selectContacts, selectError, selectIsLoading } from "../../redux/contacts/selectors";
 
 
 const ContactsPage = () => {
@@ -48,14 +49,15 @@ const ContactsPage = () => {
       {error && <ErrorMessage />}
       {isLoading && <Loader />}
        <SearchBox   />  
-   {contacts === null && contacts.length===0 (<p> There are no contacts in your Phonebook yet! </p>)}
-      <ContactList />
+   { contacts.length===0 ?
+   (<p> <b>There are no contacts in your Phonebook yet!</b></p>) :
+     ( <ContactList />)}
       <Toaster
-        position="top-right"
+        position="top-center"
         toastOptions={{
           success: {
             style: {
-              background: "#4dc31a",
+              background: "#4b723a",
             },
           },
           error: {

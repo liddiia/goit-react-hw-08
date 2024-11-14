@@ -1,8 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
 
 import css from "./UserMenu.module.css";
-import { selectUsersData } from "../../redux/auth/slice";
+
 import { apiLogoutUser } from "../../redux/auth/operations";
+import { selectUsersData } from "../../redux/auth/selectors";
 
 const UserMenu = () => {
   const dispatch = useDispatch();
@@ -12,7 +13,7 @@ const UserMenu = () => {
   };
   return (
     <div className={css.userMenuCont}>
-      <span> Hello, {userData.name}!</span>
+      <span className={css.spanHello}> <b>Hello, {userData.name} !</b> </span>
       <button onClick={onLogout} type="button">
         {" "}
         Logout{" "}

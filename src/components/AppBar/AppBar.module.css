@@ -1,4 +1,13 @@
-/* Створіть компонент Layout, який буде рендерити компонент
- AppBar і огортати усі маршрути, щоб бути доступним на кожному із них. 
-Компонент AppBar має рендерити компонент навігації Navigation та AuthNav. 
-Водночас авторизований користувач замість AuthNav має бачити UserMenu. */
+.header{
+    display: flex;
+    align-items: center;
+  width: 100%;
+    padding: 20px;
+    justify-content: space-between;
+    background-color: var(--color-light);
+  
+    box-shadow: 0px 2px 10px 1px  rgb(75, 99, 91);
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px; 
+    align-items: center;
+}
