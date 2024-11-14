@@ -49,7 +49,7 @@ const ContactsPage = () => {
       {error && <ErrorMessage />}
       {isLoading && <Loader />}
        <SearchBox   />  
-   { contacts=== null && contacts.length===0 ?
+   { contacts=== null || contacts.length===0 ?
    (<p> <b>There are no contacts in your Phonebook yet!</b></p>) :
      ( <ContactList />)}
       <Toaster
