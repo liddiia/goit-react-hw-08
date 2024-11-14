@@ -29,7 +29,7 @@ const ContactsPage = () => {
     toast.success("The phonebook is loaded!");
   })
   .catch((error)=> {
-    toast.error("Failed to download phonebook!");
+    toast.error(error.message);
   });
    },[dispatch]
 )
