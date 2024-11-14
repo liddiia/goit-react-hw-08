@@ -5,10 +5,21 @@ import { deleteContact } from "../../redux/contacts/operations";
 
 const ContactItem = ({ id, name, number }) => {
   const dispatch = useDispatch();
-  const onDelContact = (contactId) => {
-    const action = deleteContact(contactId);
-    dispatch(action);
+
+const onDelContact = (contactId) => {
+    // Додамо підтвердження перед видаленням контакту
+    const isConfirmed = window.confirm("Are you sure you want to delete this contact?");
+    if (isConfirmed) {
+      const action = deleteContact(contactId);
+      dispatch(action);
+    }
   };
+
+
+  // const onDelContact = (contactId) => {
+  //   const action = deleteContact(contactId);
+  //   dispatch(action);
+  // };
   return (
     <div className={css.contactItem}>
       <div className={css.contactItemData}>

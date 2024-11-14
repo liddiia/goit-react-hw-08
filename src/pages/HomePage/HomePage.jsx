@@ -1,7 +1,10 @@
 
 import { NavLink } from "react-router-dom";
 import css from "./HomePage.module.css";
+import { selectUsersDataIsLoggedIn } from "../../redux/auth/selectors";
+import { useSelector } from "react-redux";
 const HomePage = () => {
+  const isLoggedIn = useSelector(selectUsersDataIsLoggedIn);
   return (
     <div className={css.homePage}>
       <section className={css.header}>
@@ -17,15 +20,20 @@ const HomePage = () => {
           <li>Manage your contacts from anywhere, anytime.</li>
         </ul>
       </section>
-
-      <section className={css.navigation}>
+<section className={css.navigation}>
         <h2>Get Started</h2>
+{isLoggedIn ?( <NavLink to="/contacts" className={css.link}>
+        <b>  Contacts</b>
+        </NavLink>) :(
+      <>
         <NavLink to="/register" className={css.link}>
         <b>  Register</b>
         </NavLink>
         <NavLink to="/login" className={css.link}>
          <b> Log in</b>
         </NavLink>
+        </>
+      )}
       </section>
     </div>
   );
