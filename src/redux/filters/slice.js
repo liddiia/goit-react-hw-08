@@ -13,7 +13,7 @@ const slice = createSlice({
   },
 });
 
-export const filtersContacts = (state) => state.filters.name;
+export const selectNameFilter = (state) => state.filters.name;
 export const { setFilter } = slice.actions;
 
 export default slice.reducer;

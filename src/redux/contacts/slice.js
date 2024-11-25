@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { apiGetContacts, addContact, deleteContact } from "../contacts/operations";
+import { apiLogoutUser } from "../auth/operations";
 
 
 const initialState = {
@@ -54,7 +55,15 @@ const initialState = {
       .addCase(deleteContact.rejected, (state) => {
         state.loading = false;
         state.error = true;
-      }),
+      })
+      .addCase(apiLogoutUser.fulfilled, (state) => {
+        state.user = {
+          name: null,
+          email: null,
+        };
+        state.token = null;
+        state.isLoggedIn = false;
+      })
 });
 
 export default contactsSlice.reducer;

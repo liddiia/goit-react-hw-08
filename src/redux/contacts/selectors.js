@@ -1,12 +1,12 @@
 import {createSelector } from "@reduxjs/toolkit";
-import { filtersContacts } from "../filters/slice";
+import { selectNameFilter } from "../filters/slice";
 
 export const selectIsLoading = (state) => state.contacts.loading;
 export const selectError = (state) => state.contacts.error;
 export const selectContacts = (state) => state.contacts.items;
 
-export const selectFilterContacts = createSelector(
-  [selectContacts, filtersContacts],
+export const selectFilteredContacts = createSelector(
+  [selectContacts, selectNameFilter],
   (contacts, filter) => {
     if (!Array.isArray(contacts)) {
       return [];
